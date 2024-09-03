@@ -127,10 +127,10 @@ while (op != 3 || op == null) {
     if (op == 1) {
         console.log('➡️ CONVERSION DE COORDENADAS GEODESICAS A PLANAS')    
         console.log('Se debe ingresar GG(grados), MM(minutos), SS.SSSS(segundos)')
-        let g_lat = prompt('Latitud Sur (grados): ')          
+        let g_lat = prompt('Latitud Sur (grados) entre -22° y -56°: ')          
         while (g_lat <= -56 || g_lat >= -22) {
             console.log ('Latitud fuera de rango')
-            g_lat = prompt('Latitud Sur (grados): ')                      
+            g_lat = prompt('Latitud Sur (grados) entre -22° y -56°: ')                      
         }
         let m_lat = prompt('Latitud Sur (minutos): ')
         while (m_lat < 0 || m_lat > 59) {
@@ -143,7 +143,7 @@ while (op != 3 || op == null) {
             s_lat = prompt('Latitud Sur (segundos): ')                      
         }
         console.log('Latitud Sur ingresada: ' + g_lat + '°'+ m_lat + 'min ' + s_lat + 'seg')
-        let g_long = prompt('Longitud Oeste (grados): ')          
+        let g_long = prompt('Longitud Oeste (grados) entre -73.5 y -52.5: ')          
         while (g_long <= -73.5 || g_long >= -52.5) {
             console.log ('Longitud fuera de rango')
             g_long = prompt('Longitud Oeste (grados): ')                      
