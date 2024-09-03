@@ -162,7 +162,7 @@ while (op != 3 || op == null) {
         let coord_planas = calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
         console.log(coord_planas[0])
         console.log(coord_planas[1])
-        alert('Coordenanadas planas calculadas X = ' + coord_planas[0].toFixed(3) + ',3 Y = ' + coord_planas[1].toFixed(3));
+        alert('Coordenanadas planas calculadas X = ' + coord_planas[0].toFixed(3) + ', Y = ' + coord_planas[1].toFixed(3));
 
     }
     else if (op == 2) {
