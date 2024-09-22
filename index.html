@@ -12,15 +12,36 @@
 <body>
 <div class = "grid-container">
     <header>
-        <h1>Conversor de Coordenadas </h1>
+        <img class = "logo-app-page" src="./assets/globe.svg" alt="logo-app"></a>
+        <h1>Agrimensura</h1>
+        <nav class="menu-nav">
+            <ul>
+                <li>
+                    <a class="navlink" href="#">Conversor</a> 
+                </li>
+                <li>
+                    <a class="navlink" id="help" target="blank" href="http://earg.fcaglp.unlp.edu.ar/calc/transf.pdf">Ayuda</a>
+                </li>                
+            </ul>
+        </nav>
     </header>
     <main>
-        <p>Esta aplicación convierte coordenadas geodésicas Latitud (Sur) y Longitud (Oeste - W) a coordenadas planas Gauss-Krüger (X, Y) </p>
-        <p>Esto es útil para el cálculo de distancia entre dos puntos y también para graficar los puntos en un software CAD</p>
-        <p>Bibliografia para cálculo <a target="blank" href= "http://earg.fcaglp.unlp.edu.ar/calc/transf.pdf">aquí</a></p>      
-        
+        <h2>Conversor de coordenadas</h2>
+        <section class = "geoaplanas">
+            <input id="LatGrados" type="text" maxlength="2">
+            <input id="inputLongitud" type="text" maxlength="2">
+        </section>
     </main>
-    <script src = "./js/main.js"></script> 
+    <aside>
+        <section id = "ayuda" class = "ayuda active"> 
+            <p>Esta aplicación convierte coordenadas geodésicas Latitud (Sur) y Longitud (Oeste - W) a coordenadas planas Gauss-Krüger (X, Y) </p>
+            <p>Esto es útil para el cálculo de distancia entre dos puntos y también para graficar los puntos en un software CAD</p>            
+        </section>
+    </aside> 
+    <footer>
+        <p>Hornero dev's - Coderhouse - 2024</p>        
+    </footer>
 </div>    
+    <script src = "./js/main.js"></script>
 </body>
 </html>

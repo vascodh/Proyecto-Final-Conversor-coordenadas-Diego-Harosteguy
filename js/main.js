@@ -4,7 +4,7 @@
 
 const a = 6378137;
 const f = 0.0033528107;
-const b = a * (1-f);
+const b = 6356752.31414028  //a * (1-f);
 const k = 1;
 const n = f / (2 - f)
 const fajas_gk_arg = [
@@ -23,7 +23,7 @@ let gamma = 15/16 * Math.pow(n,2) - (15/32 * Math.pow(n,4))
 let delta = -35/48*Math.pow(n,3) + (105/256 * Math.pow(n,4))
 
 
-const falso_norte = 10001965.729;
+const falso_norte = 10001965.7292314806;
 
 
 function gradosAradianes(grados) {
@@ -54,6 +54,7 @@ function meridianoCentral(long) {
     }
     else return -1
 }
+
 function gmsAgrados(g,m,s) {
     let grados
     grados = s / 3600
@@ -122,6 +123,10 @@ function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
     return coord
 }
 
+let coord_planas = calculoGeodesicasAplanas(-56,47,10,-67,45,5)
+console.log(coord_planas[0])
+console.log(coord_planas[1])
+/*
 op = menu();
 while (op != 3 || op == null) {
     if (op == 1) {
@@ -176,5 +181,23 @@ while (op != 3 || op == null) {
     op = menu();
 }
 
+*/
+/*
+    let inputLatitud = document.getElementById("inputLatitud")
+
+    inputLatitud.addEventListener("change", function(e){
+        console.log(e.target.value)
+    })
+*/
 
 
+let btnayuda = document.getElementById("help");
+let ayudaconversor = document.getElementById("ayuda")
+
+btnayuda.addEventListener("mouseover",(e)=>{
+    ayudaconversor.className = "ayuda active";
+    console.log('Mouse');    
+})
+btnayuda.addEventListener("mouseout", (e)=>{
+    ayudaconversor.className = "ayuda inactive"
+})

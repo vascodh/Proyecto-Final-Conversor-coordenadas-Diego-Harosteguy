@@ -1,15 +1,137 @@
 /* ### Reset #### */
 html {
-    box-sizing: border-box;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  * {
-     font-family: "Jura", sans-serif;
-  }
-  
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+	/*font-family: 'Open Sans', sans-serif;*/
+  font-family: "Jura", sans-serif;
+}
+
+/* GRID LAYOUT */
+
+.grid-container {
+  margin-left: 30px;
+  margin-right: 30px;
+  display: grid;
+  grid-template-columns: 2fr 0.5fr;
+  grid-template-rows: 0.3fr 8fr 0.5fr;
+  grid-template-areas: "header header" 
+                        "main  aside" 
+                        "footer footer";
+}
+a {
+  text-decoration: none;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: end;
+}
+
+body {
+  font-weight: 100;
+	font-size: 18px;
+  background-image: url("../assets/fondo_login.jpg");
+  background-size: cover;
+}
+
+h1 {
+  font-size: 1.8em;
+  color: #00284c;
+  padding: 6px;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #00284c;  
+  margin-left: 20px;
+}
+/* #### HEADER #### */
+header {
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+}
+.menu-nav
+{
+  flex-grow: 2;
+  align-self: center;
+}
+.navlink {
+  margin-left: 30px;
+  font-weight: 600;  
+}
+.navlink:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: #00284c;
+}
+.logo-app-page {
+  width: 50px;
+  height: auto;
+}
+
+/* #### MAIN #### */
+main {
+  grid-area: main;
+  display: flex;
+  border-top: 1px solid #f0ff22a8;
+  border-left: 1px solid #f0ff22a8;
+  border-bottom: 1px solid #f0ff22a8;
+  border-radius: 5px;
+  border-top-left-radius: 25px;
+}
+.title-app{
+  font-size: 2.5em;
+  color: #00284c;
+  font-weight:700;
+  text-shadow: 0 0 18px #cac6c3f5;
+}
+
+.logo-app-page {
+  width: 50px;
+  height: auto;
+}
+
+/* ### ASIDE ### */
+.ayuda {
+  border: 1px solid #ff7e22b7;
+  border-radius: 15px;
+	width: 15em;
+  height: auto;
+	margin: 1em;
+  padding: 1em;
+  text-align: center;
+  font-weight: 600;
+}
+aside {
+  grid-area: aside;  
+  border-top: 1px solid #f0ff22a8;
+  border-right: 1px solid #f0ff22a8;
+  border-bottom: 1px solid #f0ff22a8;
+  border-bottom-right-radius: 25px;
+}
+.active {
+  visibility: visible;
+}
+
+.inactive {
+  visibility: hidden;
+}
+
+/* #### FOOTER #### */
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #dff2ff;
+}
