@@ -38,7 +38,7 @@ ul {
 body {
   font-weight: 100;
 	font-size: 18px;
-  background-image: url("../assets/fondo_login.jpg");
+  background-image: url("../assets/fondo.jpg");
   background-size: cover;
 }
 
@@ -86,7 +86,7 @@ main {
   border-top: 1px solid #f0ff22a8;
   border-left: 1px solid #f0ff22a8;
   border-bottom: 1px solid #f0ff22a8;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-top-left-radius: 25px;
 }
 .title-app{
@@ -103,6 +103,7 @@ main {
 
 /* ### ASIDE ### */
 .ayuda {
+  font-size: 0.9em;
   border: 1px solid #ff7e22b7;
   border-radius: 15px;
 	width: 15em;
