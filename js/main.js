@@ -125,7 +125,7 @@ if (localStorage.length > 0) {
     for (let j = 1; j <= localStorage.length/2; j++) {
         let coord_x = localStorage.getItem(`x${j}`)
         let coord_y = localStorage.getItem(`y${j}`)    
-        areacoordplanas.value = areacoordplanas.value  + `${j}) X = ${parseFloat(coord_x).toFixed(3)} Y = ${parseFloat(coord_y).toFixed(3)} \n`
+        areacoordplanas.value = areacoordplanas.value  + `${j}) X = ${parseFloat(coord_x).toFixed(3)}   Y = ${parseFloat(coord_y).toFixed(3)} \n`
     }
 }
 
@@ -140,17 +140,11 @@ btnconvert.addEventListener("click",(e)=> {
     let s_long = document.getElementById("LongSegundos").value
     let areacoordplanas = document.getElementById("areacoordplanas")
     let coord_planas = calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
-       lista_coord.push(coord_planas)
-    console.log(coord_planas)
-    let texto_coord = ""
-    //texto_coord = 'Lat: ' + g_lat + '° '+ m_lat +  '\" ' + s_lat + '\'  ' + ' Long: ' + g_long + '° '+ m_long +  '\" ' + s_long + '\' ->' + '  X = ' + coord_planas[0].toFixed(3) + '  Y = ' + coord_planas[1].toFixed(3) 
-    //areacoordplanas.value = areacoordplanas.value + '\n' + texto_coord
-   // for (let puntos of lista_coord) {
-    areacoordplanas.value = areacoordplanas.value + 'X = ' + coord_planas[0].toFixed(3) + '   Y = ' + coord_planas[1].toFixed(3) + '\n' 
-   // }
-   localStorage.setItem(`x${i}`,coord_planas[0])
-   localStorage.setItem(`y${i}`,coord_planas[1])
-   i = i + 1
+    lista_coord.push(coord_planas)
+    areacoordplanas.value = areacoordplanas.value + `${i}) ` + 'X = ' + coord_planas[0].toFixed(3) + '   Y = ' + coord_planas[1].toFixed(3) + '\n' 
+    localStorage.setItem(`x${i}`,coord_planas[0])
+    localStorage.setItem(`y${i}`,coord_planas[1])
+    i = i + 1
 })
 
 let btnayuda = document.getElementById("help");
