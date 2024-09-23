@@ -27,7 +27,8 @@
     </header>
     <main>
         <h2>Conversor de coordenadas</h2>
-        <section class = "geoaplanas">            
+        <section class = "geoaplanas">
+            <section class="coordLatitud"></section>            
             <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Latitud Sur (S)</h3>
             <p>Valores admitidos entre -22 y -56 grados</p>
             <form class="form">
@@ -46,6 +47,10 @@
             <input id="LongMinutos" class = "inputgeo" type="text" maxlength="2">
             <label for="LongSegundos">Segundos</label>
             <input id="LongSegundos" class = "inputgeo" type="text" maxlength="7">
+            <div>
+            <label for="contvertplanas">Convertir a coordenadas planas</label>            
+            <button>Convertir</button>
+            </div>
         </section>
     </main>
     <aside>
