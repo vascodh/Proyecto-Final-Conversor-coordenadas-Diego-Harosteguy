@@ -81,16 +81,7 @@ function falsoEste(mc) {
 }
 
 ///// PROGRAMA /////
-let op;
-const menu = function() {
-    console.log('Conversor de Coordenadas')
-    console.log('Opciones')
-    console.log('1️⃣ Conversión de Coordenadas geodesicas a coordenadas planas');
-    console.log('2️⃣ Conversión de Coordenadas planas a geodésicas');
-    console.log('3️⃣ Salir')
-    opc = prompt('Elija una opción por favor')
-    return opc
-}
+
 
 function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
     let lat = gradosAradianes(gmsAgrados(g_lat,m_lat,s_lat))
@@ -123,9 +114,7 @@ function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
     return coord
 }
 
-let coord_planas = calculoGeodesicasAplanas(-56,47,10,-67,45,5)
-console.log(coord_planas[0])
-console.log(coord_planas[1])
+
 /*
 op = menu();
 while (op != 3 || op == null) {
@@ -191,6 +180,23 @@ while (op != 3 || op == null) {
 */
 
 
+let btnconvert = document.getElementById("btn-convert")
+
+btnconvert.addEventListener("click",(e)=> {
+    let g_lat = document.getElementById("LatGrados")
+    console.log (g_lat.textContent)
+    let m_lat = document.getElementById("LatMinutos")
+    let s_lat = document.getElementById("LatSegundos")
+    let g_long = document.getElementById("LongGrados")
+    let m_long = document.getElementById("LongMinutos")
+    let s_long = document.getElementById("LongSegundos")
+    console.log("Lat" + g_lat)
+    calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
+    console.log('Latitud Sur ingresada: ' + g_lat + '°'+ m_lat + 'min ' + s_lat + 'seg')
+})
+
+
+
 let btnayuda = document.getElementById("help");
 let ayudaconversor = document.getElementById("ayuda")
 
@@ -201,3 +207,4 @@ btnayuda.addEventListener("mouseover",(e)=>{
 btnayuda.addEventListener("mouseout", (e)=>{
     ayudaconversor.className = "ayuda inactive"
 })
+

@@ -40,23 +40,20 @@ body {
 	font-size: 18px;
   background-image: url("../assets/fondo.jpg");
   background-size: cover;
+  color: #00284c;
 }
 
 h1 {
   font-size: 1.8em;
-  color: #00284c;
   padding: 6px;
 }
 
 h2 {
   font-size: 1.5em;
-  color: #00284c;
-
 }
 
 h3 {
   font-size: 1.2em;
-  color: #00284c;  
   margin-bottom: 5px;
 }
 /* #### HEADER #### */
@@ -102,7 +99,6 @@ main {
 }
 .title-app{
   font-size: 2.5em;
-  color: #00284c;
   font-weight:700;
   text-shadow: 0 0 18px #cac6c3f5;
 }
@@ -113,23 +109,43 @@ main {
 }
 
 .inputgeo {
-  width: 95px;
+  width: 120px;
   padding: 10px;
   padding-left: 20px;
   border: 1px solid #dff2ff;
   border-radius: 20px;
-  font-size: 0.9em;
+  font-size: 1.3em;
   margin-left: 20px;
   background-color: transparent;
   transition: border-color 0.6s, box-shadow 0.6s, background-color 0.6s; /* Transiciones */
-  color: #285b97;
-  font-weight: 600;
+  color: #f0ff22a8;
+  font-weight: 700;
 }
-
+.inputgeo::placeholder {
+  color: #f0ff2260;
+}
 .inputgeo:focus {
   border-color: #285b97;
   box-shadow: 0 0 10px rgba(78, 87, 84, 0.671);
   outline: none;
+}
+.convert-container {
+  margin-top: 20px;
+}
+.btn-convert {
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #dff2ff;
+  color: #dff2ff;
+  border-radius: 20px;
+  font-size: 1em;
+  background-color: transparent;
+  transition: border-color 0.6s, box-shadow 0.6s, background-color 0.6s; /* Transiciones */  
+}
+
+.btn-convert:hover {
+  background-color: #ff7e22be;
+  color:#dff2ff;
 }
 
 /* ### ASIDE ### */

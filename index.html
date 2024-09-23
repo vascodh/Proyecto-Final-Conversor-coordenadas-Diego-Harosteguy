@@ -33,23 +33,23 @@
             <p>Valores admitidos entre -22 y -56 grados</p>
             <form class="form">
             <label for="LatGrados">Grados</label>
-            <input id="LatGrados" class = "inputgeo" type="text" maxlength="2">
+            <input id="LatGrados" class = "inputgeo" type="text" placeholder="-34" maxlength="3">
             <label for="LatMinutos">Minutos</label>            
-            <input id="LatMinutos" class = "inputgeo" type="text" maxlength="2">
+            <input id="LatMinutos" class = "inputgeo" type="text" placeholder="39" maxlength="2">
             <label for="LatSegundos">Segundos</label>
-            <input id="LatSegundos" class = "inputgeo" type="text" maxlength="7">            
+            <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.911" maxlength="6">            
             </form>
             <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
             <p>Valores admitidos entre -73.5 y -52.5 grados</p>
             <label for="LongGrados">Grados</label>
-            <input id="LongGrados" class = "inputgeo" type="text" maxlength="2">
+            <input id="LongGrados" class = "inputgeo" type="text" placeholder="-59" maxlength="3">
             <label for="LongMinutos">Minutos</label>            
-            <input id="LongMinutos" class = "inputgeo" type="text" maxlength="2">
+            <input id="LongMinutos" class = "inputgeo" type="text" placeholder="25" maxlength="2">
             <label for="LongSegundos">Segundos</label>
-            <input id="LongSegundos" class = "inputgeo" type="text" maxlength="7">
-            <div>
-            <label for="contvertplanas">Convertir a coordenadas planas</label>            
-            <button>Convertir</button>
+            <input id="LongSegundos" class = "inputgeo" type="text" placeholder="56.456" maxlength="6">
+            <div class="convert-container">
+                <label for="contvertplanas">Convertir a coordenadas planas</label>            
+                <button class = "btn-convert" id = "btn-convert">Convertir</button>
             </div>
         </section>
     </main>
