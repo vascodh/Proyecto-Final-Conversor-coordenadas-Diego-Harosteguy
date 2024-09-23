@@ -27,9 +27,25 @@
     </header>
     <main>
         <h2>Conversor de coordenadas</h2>
-        <section class = "geoaplanas">
-            <input id="LatGrados" type="text" maxlength="2">
-            <input id="inputLongitud" type="text" maxlength="2">
+        <section class = "geoaplanas">            
+            <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Latitud Sur (S)</h3>
+            <p>Valores admitidos entre -22 y -56 grados</p>
+            <form class="form">
+            <label for="LatGrados">Grados</label>
+            <input id="LatGrados" class = "inputgeo" type="text" maxlength="2">
+            <label for="LatMinutos">Minutos</label>            
+            <input id="LatMinutos" class = "inputgeo" type="text" maxlength="2">
+            <label for="LatSegundos">Segundos</label>
+            <input id="LatSegundos" class = "inputgeo" type="text" maxlength="7">            
+            </form>
+            <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
+            <p>Valores admitidos entre -73.5 y -52.5 grados</p>
+            <label for="LongGrados">Grados</label>
+            <input id="LongGrados" class = "inputgeo" type="text" maxlength="2">
+            <label for="LongMinutos">Minutos</label>            
+            <input id="LongMinutos" class = "inputgeo" type="text" maxlength="2">
+            <label for="LongSegundos">Segundos</label>
+            <input id="LongSegundos" class = "inputgeo" type="text" maxlength="7">
         </section>
     </main>
     <aside>

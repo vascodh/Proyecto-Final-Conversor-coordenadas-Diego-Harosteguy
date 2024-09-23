@@ -50,8 +50,14 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+  color: #00284c;
+
+}
+
+h3 {
+  font-size: 1.2em;
   color: #00284c;  
-  margin-left: 20px;
+  margin-bottom: 5px;
 }
 /* #### HEADER #### */
 header {
@@ -78,11 +84,16 @@ a:visited {
   width: 50px;
   height: auto;
 }
-
+.location-pin {
+  width:20px;
+  height: auto;
+}
 /* #### MAIN #### */
 main {
   grid-area: main;
   display: flex;
+  flex-direction: column;
+  padding-left: 20px;
   border-top: 1px solid #f0ff22a8;
   border-left: 1px solid #f0ff22a8;
   border-bottom: 1px solid #f0ff22a8;
@@ -101,12 +112,32 @@ main {
   height: auto;
 }
 
+.inputgeo {
+  width: 95px;
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid #dff2ff;
+  border-radius: 20px;
+  font-size: 0.9em;
+  margin-left: 20px;
+  background-color: transparent;
+  transition: border-color 0.6s, box-shadow 0.6s, background-color 0.6s; /* Transiciones */
+  color: #285b97;
+  font-weight: 600;
+}
+
+.inputgeo:focus {
+  border-color: #285b97;
+  box-shadow: 0 0 10px rgba(78, 87, 84, 0.671);
+  outline: none;
+}
+
 /* ### ASIDE ### */
 .ayuda {
   font-size: 0.9em;
-  border: 1px solid #ff7e22b7;
+  border: 2px solid #ff7e22b7;
   border-radius: 15px;
-	width: 15em;
+	width: auto;
   height: auto;
 	margin: 1em;
   padding: 1em;
@@ -118,7 +149,9 @@ aside {
   border-top: 1px solid #f0ff22a8;
   border-right: 1px solid #f0ff22a8;
   border-bottom: 1px solid #f0ff22a8;
+  /*border-left: 1px solid #f0ff22a8;*/
   border-bottom-right-radius: 25px;
+  justify-content: end;
 }
 .active {
   visibility: visible;
