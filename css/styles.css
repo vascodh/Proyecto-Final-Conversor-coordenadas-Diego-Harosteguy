@@ -136,6 +136,9 @@ main {
 .convert-container {
   margin-top: 20px;
 }
+.convert-container label {
+  background-color:#ff7e2249;
+}
 .btn-convert {
   width: 150px;
   padding: 10px;
@@ -211,8 +214,7 @@ aside {
 footer {
   grid-area: footer;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   color: #dff2ff;
   font-weight: 100;
 }
