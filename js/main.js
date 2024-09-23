@@ -115,84 +115,24 @@ function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
 }
 
 
-/*
-op = menu();
-while (op != 3 || op == null) {
-    if (op == 1) {
-        console.log('➡️ CONVERSION DE COORDENADAS GEODESICAS A PLANAS')    
-        console.log('Se debe ingresar GG(grados), MM(minutos), SS.SSSS(segundos)')
-        let g_lat = prompt('Latitud Sur (grados) entre -22° y -56°: ')          
-        while (g_lat <= -56 || g_lat >= -22) {
-            console.log ('Latitud fuera de rango')
-            g_lat = prompt('Latitud Sur (grados) entre -22° y -56°: ')                      
-        }
-        let m_lat = prompt('Latitud Sur (minutos): ')
-        while (m_lat < 0 || m_lat > 59) {
-            console.log ('valor fuera de rango')
-            m_lat = prompt('Latitud Sur (minutos): ')                      
-        }
-        let s_lat = prompt('Latitud Sur (segundos): ')
-        while (s_lat < 0 || s_lat > 59) {
-            console.log ('valor fuera de rango')
-            s_lat = prompt('Latitud Sur (segundos): ')                      
-        }
-        console.log('Latitud Sur ingresada: ' + g_lat + '°'+ m_lat + 'min ' + s_lat + 'seg')
-        let g_long = prompt('Longitud Oeste (grados) entre -73.5 y -52.5: ')          
-        while (g_long <= -73.5 || g_long >= -52.5) {
-            console.log ('Longitud fuera de rango')
-            g_long = prompt('Longitud Oeste (grados): ')                      
-        }
-        let m_long = prompt('Longitud Oeste (minutos): ')
-        while (m_long < 0 || m_long > 59) {
-            console.log ('valor fuera de rango')
-            m_long = prompt('Longitud Oeste (minutos): ')                      
-        }
-        let s_long = prompt('Longitud Oeste (segundos): ')
-        while (s_long < 0 || s_long > 59) {
-            console.log ('valor fuera de rango')
-            s_long = prompt('Longitud Oeste (segundos): ')                      
-        }
-        console.log('Longitud Oeste ingresada: ' + g_long + '° '+ m_long + 'min ' + s_long + 'seg')   
-        let coord_planas = calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
-        console.log(coord_planas[0])
-        console.log(coord_planas[1])
-        alert('Coordenanadas planas calculadas X = ' + coord_planas[0].toFixed(3) + ', Y = ' + coord_planas[1].toFixed(3));
-
-    }
-    else if (op == 2) {
-        console.log('➡️ CONVERSION DE COORDENADAS PLANAS A GEODESICAS')    
-        console.log('Se debe ingresar GG(grados), MM(minutos), SS.SSSS(segundos)')            
-        console.warn('funcionalidad en desarrollo...')
-    }
-    else { 
-        console.error('OPCION INVALIDA')
-    }
-    op = menu();
-}
-
-*/
-/*
-    let inputLatitud = document.getElementById("inputLatitud")
-
-    inputLatitud.addEventListener("change", function(e){
-        console.log(e.target.value)
-    })
-*/
-
+let lista_coord = []
 
 let btnconvert = document.getElementById("btn-convert")
 
 btnconvert.addEventListener("click",(e)=> {
-    let g_lat = document.getElementById("LatGrados")
-    console.log (g_lat.textContent)
-    let m_lat = document.getElementById("LatMinutos")
-    let s_lat = document.getElementById("LatSegundos")
-    let g_long = document.getElementById("LongGrados")
-    let m_long = document.getElementById("LongMinutos")
-    let s_long = document.getElementById("LongSegundos")
-    console.log("Lat" + g_lat)
-    calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
-    console.log('Latitud Sur ingresada: ' + g_lat + '°'+ m_lat + 'min ' + s_lat + 'seg')
+    let g_lat = document.getElementById("LatGrados").value
+    let m_lat = document.getElementById("LatMinutos").value
+    let s_lat = document.getElementById("LatSegundos").value
+    let g_long = document.getElementById("LongGrados").value
+    let m_long = document.getElementById("LongMinutos").value
+    let s_long = document.getElementById("LongSegundos").value
+    let areacoordplanas = document.getElementById("areacoordplanas")
+    let coord_planas = calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
+    lista_coord.push(coord_planas)
+    console.log(lista_coord)
+    let texto_coord = ""
+    texto_coord = 'Lat: ' + g_lat + '° '+ m_lat +  '\" ' + s_lat + '\'  ' + ' Long: ' + g_long + '° '+ m_long +  '\" ' + s_long + '\' ->' + '  X = ' + coord_planas[0].toFixed(3) + '  Y = ' + coord_planas[1].toFixed(3) 
+    areacoordplanas.value = areacoordplanas.value + '\n' + texto_coord
 })
 
 
@@ -202,7 +142,6 @@ let ayudaconversor = document.getElementById("ayuda")
 
 btnayuda.addEventListener("mouseover",(e)=>{
     ayudaconversor.className = "ayuda active";
-    console.log('Mouse');    
 })
 btnayuda.addEventListener("mouseout", (e)=>{
     ayudaconversor.className = "ayuda inactive"
