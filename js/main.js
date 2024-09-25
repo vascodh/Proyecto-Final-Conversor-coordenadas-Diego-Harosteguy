@@ -121,7 +121,7 @@ let i = 1
 
 if (localStorage.length > 0) {
     i = localStorage.length/2 + 1
-    let areacoordplanas = document.getElementById("areacoordplanas")
+    let areacoordplanas = document.querySelector("#areacoordplanas")
     for (let j = 1; j <= localStorage.length/2; j++) {
         let coord_x = localStorage.getItem(`x${j}`)
         let coord_y = localStorage.getItem(`y${j}`)    
@@ -129,16 +129,16 @@ if (localStorage.length > 0) {
     }
 }
 
-let btnconvert = document.getElementById("btn-convert")
+let btnconvert = document.querySelector("#btn-convert")
 
 btnconvert.addEventListener("click",(e)=> {
-    let g_lat = document.getElementById("LatGrados").value
-    let m_lat = document.getElementById("LatMinutos").value
-    let s_lat = document.getElementById("LatSegundos").value
-    let g_long = document.getElementById("LongGrados").value
-    let m_long = document.getElementById("LongMinutos").value
-    let s_long = document.getElementById("LongSegundos").value
-    let areacoordplanas = document.getElementById("areacoordplanas")
+    let g_lat = document.querySelector("#LatGrados").value
+    let m_lat = document.querySelector("#LatMinutos").value
+    let s_lat = document.querySelector("#LatSegundos").value
+    let g_long = document.querySelector("#LongGrados").value
+    let m_long = document.querySelector("#LongMinutos").value
+    let s_long = document.querySelector("#LongSegundos").value
+    let areacoordplanas = document.querySelector("#areacoordplanas")
     let coord_planas = calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long)
     lista_coord.push(coord_planas)
     areacoordplanas.value = areacoordplanas.value + `${i}) ` + 'X = ' + coord_planas[0].toFixed(3) + '   Y = ' + coord_planas[1].toFixed(3) + '\n' 
@@ -147,8 +147,8 @@ btnconvert.addEventListener("click",(e)=> {
     i = i + 1
 })
 
-let btnayuda = document.getElementById("help");
-let ayudaconversor = document.getElementById("ayuda")
+let btnayuda = document.querySelector("#help");
+let ayudaconversor = document.querySelector("#ayuda")
 
 btnayuda.addEventListener("mouseover",(e)=>{
     ayudaconversor.className = "ayuda active";
