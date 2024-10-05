@@ -37,7 +37,7 @@
             <label for="LatMinutos">Minutos</label>            
             <input id="LatMinutos" class = "inputgeo" type="text" placeholder="39" maxlength="2">
             <label for="LatSegundos">Segundos</label>
-            <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.911" maxlength="6">            
+            <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.91149" maxlength="8">            
             </form>
             <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
             <p>Valores admitidos entre -73.5 y -52.5 grados</p>
@@ -46,7 +46,7 @@
             <label for="LongMinutos">Minutos</label>            
             <input id="LongMinutos" class = "inputgeo" type="text" placeholder="25" maxlength="2">
             <label for="LongSegundos">Segundos</label>
-            <input id="LongSegundos" class = "inputgeo" type="text" placeholder="56.456" maxlength="6">
+            <input id="LongSegundos" class = "inputgeo" type="text" placeholder="56.45634" maxlength="8">
             <div class="convert-container">
                 <label for="contvertplanas">Convertir a coordenadas planas</label>            
                 <button class = "btn-convert" id = "btn-convert">Convertir</button>
@@ -62,11 +62,14 @@
             <p>Esta aplicación convierte coordenadas geodésicas Latitud (Sur) y Longitud (Oeste - W) a coordenadas planas Gauss-Krüger (X, Y) </p>
             <p>Esto es útil para el cálculo de distancia entre dos puntos y también para graficar los puntos en un software CAD</p>            
         </section>
+        <iframe class = "maps" src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d22078.762235662412!2d-59.4213222018568!3d-34.65400482223829!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzTCsDM5JzA1LjMiUyA1OcKwMjUnMjYuMCJX!5e0!3m2!1ses-419!2sar!4v1728094024293!5m2!1ses-419!2sar" width="400" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </aside> 
     <footer>
-        <p>Hornero dev's - Coderhouse - 2024</p>        
+        <p id="fecha"></p>
+        <p>Hornero dev's - Coderhouse</p>        
     </footer>
-</div>    
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>    
     <script src = "./js/main.js"></script>
 </body>
 </html>

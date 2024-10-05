@@ -113,9 +113,9 @@ main {
 }
 
 .inputgeo {
-  width: 120px;
+  width: 150px;
   padding: 10px;
-  padding-left: 20px;
+  text-align: center;
   border: 1px solid #dff2ff;
   border-radius: 20px;
   font-size: 1.3em;

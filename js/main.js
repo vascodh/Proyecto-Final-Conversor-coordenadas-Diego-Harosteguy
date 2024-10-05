@@ -1,4 +1,4 @@
-///// CONSTANTES y FORMULAS Y FUNCIONES MATEMATICAS //////
+///// CONSTANTES, FORMULAS Y FUNCIONES MATEMATICAS //////
 
 /// ELIPSOIDE WGS84 ////
 
@@ -81,7 +81,9 @@ function falsoEste(mc) {
 }
 
 ///// PROGRAMA /////
-
+/// Funcion de calculo de coordenadas geodesicas a coordenadas planas
+/// las letras a,f,b,t,l,n... son nombres de variables de acuerdo a las formulas matematicas
+/// mas info en http://earg.fcaglp.unlp.edu.ar/calc/transf.pdf
 
 function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
     let lat = gradosAradianes(gmsAgrados(g_lat,m_lat,s_lat))
@@ -119,6 +121,8 @@ let lista_coord = []
 
 let i = 1
 
+/// Si hay calculos guardados en el localstorage lo recupera y muesta en el TextArea
+
 if (localStorage.length > 0) {
     i = localStorage.length/2 + 1
     let areacoordplanas = document.querySelector("#areacoordplanas")
@@ -128,6 +132,11 @@ if (localStorage.length > 0) {
         areacoordplanas.value = areacoordplanas.value  + `${j}) X = ${parseFloat(coord_x).toFixed(3)}   Y = ${parseFloat(coord_y).toFixed(3)} \n`
     }
 }
+
+/// Captura el ingreso de coordenadas
+/// Llama a la funcion de calculo
+/// Muestra el resultado en el TextArea
+/// Guarda los resultados en el local storage
 
 let btnconvert = document.querySelector("#btn-convert")
 
@@ -147,6 +156,8 @@ btnconvert.addEventListener("click",(e)=> {
     i = i + 1
 })
 
+// Sección de AYUDA qu aparece en ASIDE
+
 let btnayuda = document.querySelector("#help");
 let ayudaconversor = document.querySelector("#ayuda")
 
@@ -156,4 +167,12 @@ btnayuda.addEventListener("mouseover",(e)=>{
 btnayuda.addEventListener("mouseout", (e)=>{
     ayudaconversor.className = "ayuda inactive"
 })
+
+// Colocación de fechas en el FOOTER
+
+let DateTime = luxon.DateTime;
+
+let fechahoy = DateTime.now()
+let mostrarfecha = document.querySelector("#fecha");
+mostrarfecha.innerText = fechahoy.toLocaleString();
 
