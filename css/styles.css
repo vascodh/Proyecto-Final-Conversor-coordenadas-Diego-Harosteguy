@@ -89,6 +89,10 @@ a:visited {
   width:20px;
   height: auto;
 }
+.help-icon {
+  width:50px;
+  height: auto;  
+}
 /* #### MAIN #### */
 main {
   grid-area: main;
@@ -137,7 +141,7 @@ main {
   margin-top: 20px;
 }
 .convert-container label {
-  background-color:#ff7e2249;
+  background-color:#ff7e2249;  
 }
 .btn-convert {
   width: 150px;
@@ -185,22 +189,34 @@ main {
 .ayuda {
   font-size: 0.9em;
   border: 2px solid #ff7e22b7;
+  background-color:#ff7e2249;
   border-radius: 15px;
 	width: auto;
   height: auto;
 	margin: 1em;
-  padding: 1em;
+  padding: 0.5em;
   text-align: center;
   font-weight: 600;
 }
+.maps {
+  width:350px;
+  height: 380px;
+  border-radius: 5px;
+  border-bottom-right-radius: 25px;
+
+  /*width="350" height="450"*/
+}
 aside {
-  grid-area: aside;  
+  grid-area: aside; 
+  display: flex;
+  flex-direction: column; 
   border-top: 1px solid #f0ff22a8;
   border-right: 1px solid #f0ff22a8;
   border-bottom: 1px solid #f0ff22a8;
   /*border-left: 1px solid #f0ff22a8;*/
   border-bottom-right-radius: 25px;
   justify-content: end;
+  padding: 10px;
 }
 .active {
   visibility: visible;
@@ -214,7 +230,7 @@ aside {
 footer {
   grid-area: footer;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   color: #dff2ff;
   font-weight: 100;
 }

@@ -87,29 +87,13 @@ function falsoEste(mc) {
 
 function calculoGeodesicasAplanas(g_lat,m_lat,s_lat,g_long,m_long,s_long) {
     let lat = gradosAradianes(gmsAgrados(g_lat,m_lat,s_lat))
-    console.log("Latitud " + lat)
     let long = gradosAradianes(gmsAgrados(g_long,m_long,s_long))
-    console.log("Longitud " + long);
     let long_mc = gradosAradianes(meridianoCentral(gmsAgrados(g_long,m_long,s_long)))
-    console.log("Meridiano central " + long_mc)
-    console.log("a: " + a)
-    console.log("f: " + f)
-    console.log("b: " + b)
     let t = Math.tan(lat);
     let l = long - long_mc;
-    console.log("t: " + t)
-    console.log("l: " + l)
-    console.log("n: " + n)
-    console.log("alfa: " + alfa)
-    console.log("beta: " + beta)
-    console.log("gamma: " + gamma)
-    console.log("delta: " + delta)
     let eta2 = ((Math.pow(a,2) - Math.pow(b,2)) / Math.pow(b,2)) * (Math.pow(Math.cos(lat),2))
-    console.log("eta2 " + eta2)
     let B = alfa * (lat + beta * Math.sin(2*lat)+gamma*Math.sin(4*lat)+delta*Math.sin(6*lat))
-    console.log("B(lat): " + B)
     let N = k * ( a*a /Math.sqrt(((a*a*Math.cos(lat)*Math.cos(lat))+(b*b*Math.sin(lat)*Math.sin(lat)))))
-    console.log("N(lat): " + N)
     let X = B + 1/2 * N * Math.cos(lat) * Math.cos(lat) * t * l * l + 1/24 * N * Math.pow(Math.cos(lat),4) * t *(5-t*t + 9*eta2)*Math.pow(l,4) + falso_norte
     let Y = N * Math.cos(lat) * l + 1/6 * N * Math.pow(Math.cos(lat),3)*(1-t*t-eta2)*l*l*l+ 1/120*N*Math.pow(Math.cos(lat),5)*(5-18*t*t+Math.pow(t,4))*Math.pow(l,5) + falsoEste(meridianoCentral(gmsAgrados(g_long,m_long,s_long)))
     let coord = [X, Y]
@@ -156,7 +140,7 @@ btnconvert.addEventListener("click",(e)=> {
     i = i + 1
 })
 
-// Sección de AYUDA qu aparece en ASIDE
+// Sección de AYUDA que aparece en ASIDE
 
 let btnayuda = document.querySelector("#help");
 let ayudaconversor = document.querySelector("#ayuda")

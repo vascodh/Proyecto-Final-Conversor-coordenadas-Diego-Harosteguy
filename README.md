@@ -1,1 +1,2 @@
-# Conversor de Coordenadas Geodesicas a Coordenadas Planas
+# Conversor de Coordenadas Geodesicas (Latitud y Longitud) -> a Coordenadas Planas Gauss Kruger (x, y)
+## 
