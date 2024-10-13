@@ -55,7 +55,7 @@ function meridianoCentral(long) {
     else return -1
 }
 
-function gmsAgrados(g,m,s) {
+export function gmsAgrados(g,m,s) {
     let grados
     grados = s / 3600
     grados = grados + (m / 60)
