@@ -89,3 +89,13 @@ let fechahoy = DateTime.now()
 let mostrarfecha = document.querySelector("#fecha");
 mostrarfecha.innerText = fechahoy.toLocaleString();
 
+
+let mimapa = L.map('mapa').setView([-40, -59], 3);
+L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_topo@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
+    attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="http://www.ign.gob.ar/AreaServicios/Argenmap/IntroduccionV2" target="_blank">Instituto Geográfico Nacional</a> + <a href="http://www.osm.org/copyright" target="_blank">OpenStreetMap</a>',
+      minZoom: 3,
+      maxZoom: 18
+}).addTo(mimapa);
+
+let marcador = L.marker([-37, -65]).addTo(mimapa);
+marcador.bindPopup("¡Hola mundo!").openPopup();

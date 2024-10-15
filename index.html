@@ -7,6 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">       
     <!--Estilos -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
     <title>Conversor coordenadas</title>
 </head>
 <body>
@@ -30,19 +36,19 @@
         <section class = "geoaplanas">
             <section class="coordLatitud"></section>            
             <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Latitud Sur (S)</h3>
-            <p>Valores admitidos entre -22 y -56 grados</p>
+            <p>Valores admitidos entre 21° 46' y 55° 03'</p>
             <form class="form">
             <label for="LatGrados">Grados</label>
-            <input id="LatGrados" class = "inputgeo" type="text" placeholder="-34" maxlength="3">
+            <input id="LatGrados" class = "inputgeo" type="text" placeholder="34" maxlength="3">
             <label for="LatMinutos">Minutos</label>            
             <input id="LatMinutos" class = "inputgeo" type="text" placeholder="39" maxlength="2">
             <label for="LatSegundos">Segundos</label>
             <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.91149" maxlength="8">            
             </form>
             <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
-            <p>Valores admitidos entre -73.5 y -52.5 grados</p>
+            <p>Valores admitidos entre 73° 34' y 53° 38'</p>
             <label for="LongGrados">Grados</label>
-            <input id="LongGrados" class = "inputgeo" type="text" placeholder="-59" maxlength="3">
+            <input id="LongGrados" class = "inputgeo" type="text" placeholder="59" maxlength="3">
             <label for="LongMinutos">Minutos</label>            
             <input id="LongMinutos" class = "inputgeo" type="text" placeholder="25" maxlength="2">
             <label for="LongSegundos">Segundos</label>
@@ -63,13 +69,14 @@
             <p>Esta aplicación convierte coordenadas geodésicas Latitud (Sur) y Longitud (Oeste - W) a coordenadas planas Gauss-Krüger (X, Y) </p>
             <p>Esto es útil para el cálculo de distancia entre dos puntos y también para graficar los puntos en un software CAD</p>            
         </section>
-        <iframe class = "maps" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3302.451790884049!2d-58.45245164718106!3d-34.64884045288937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzTCsDM5JzE3LjQiUyA1OMKwMjQnMzguOCJX!5e1!3m2!1ses-419!2sar!4v1728349058274!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>           
+        <div id="mapa" style="height:400px;"></div>
     </aside> 
     <footer>
         <p id="fecha"></p>
         <p>Hornero dev's - Coderhouse</p>        
     </footer>
 </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>    
     <script src = "./js/main.js" type="module"></script>
 </body>
