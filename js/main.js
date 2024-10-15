@@ -1,6 +1,5 @@
 import {calculoGeodesicasAplanas, gmsAgrados} from "./funcionesconversion.js"
 
-
 let lista_coord = []
 
 let i = 1
