@@ -10,10 +10,37 @@ L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_top
       maxZoom: 18
 }).addTo(mimapa);
 
-L.marker([-37, -65]).addTo(mimapa);
+
 //marcador.bindPopup("¡Hola mundo!").openPopup();
 
+async function dataRamsac() {
+    try {
+        let res = await fetch('.//assets/ramsac.json'),
+        dataJson = await res.json();
+        console.log(dataJson.features)
+    //    dataJson.properties.array.forEach(el => {
+    //  });
+    dataJson.features.forEach(el => {
+        console.log(el.properties.codigo_estacion + ' ' + el.geometry.coordinates[0])
+        L.marker([el.geometry.coordinates[1], el.geometry.coordinates[0]], {
+            title: `${el.properties.codigo_estacion}`,   
+        }).addTo(mimapa);
 
+    });   
+    
+   
+    
+        }
+    catch(err) {
+
+    }
+    finally {
+
+    }
+}
+
+dataRamsac()
+/*
 async function getInfo(lat,long) {
     try {
         let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
@@ -32,7 +59,7 @@ async function getInfo(lat,long) {
 }
 
 getInfo(-34.65,-59.427)
-
+*/
 /*   
 fetch('https://apis.datos.gob.ar/georef/api/ubicacion?lat=-30.21&lon=-67.55')
   .then((res) => (res.ok ? res.json() : Promise.reject(res))) 
