@@ -198,14 +198,7 @@ main {
   text-align: center;
   font-weight: 600;
 }
-.maps {
-  width:350px;
-  height: 380px;
-  border-radius: 5px;
-  border-bottom-right-radius: 25px;
 
-  /*width="350" height="450"*/
-}
 aside {
   grid-area: aside; 
   display: flex;
