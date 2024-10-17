@@ -20,10 +20,10 @@ async function dataRamsac() {
         console.log(dataJson.features)
     //    dataJson.properties.array.forEach(el => {
     //  });
-    dataJson.features.forEach(el => {
-        console.log(el.properties.codigo_estacion + ' ' + el.geometry.coordinates[0])
-        L.marker([el.geometry.coordinates[1], el.geometry.coordinates[0]], {
-            title: `${el.properties.codigo_estacion}`,   
+    dataJson.features.forEach(point => {
+        console.log(point.properties.codigo_estacion + ' ' + point.geometry.coordinates[0])
+        L.marker([point.geometry.coordinates[1], point.geometry.coordinates[0]], {
+            title: `${point.properties.codigo_estacion}`,   
         }).addTo(mimapa);
 
     });   

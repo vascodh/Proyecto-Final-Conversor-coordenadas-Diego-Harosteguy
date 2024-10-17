@@ -4,5 +4,5 @@
 
 
 ### Mediante este conversor se prodrá obtener las coordenadas planas X e Y 
-° Se visualizan las coordenandas en pantalla
+° Se visualizan las coordenandas transformadas en text area en pantalla
 ° Se obtiene un mapa interctivo utilizando la libreria LEAFLET https://leafletjs.com
