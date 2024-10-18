@@ -50,45 +50,9 @@ async function dataRamsac() {
         }) 
     }
 }
+
 dataRamsac()
 
-/*
-async function getInfo(lat,long) {
-    try {
-        let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
-        dataJson = await res.json();
-        console.log(dataJson);
-        console.log(dataJson.ubicacion.municipio.nombre)
-        L.marker([lat, long]).addTo(mimapa);
-        return json
-        }
-    catch(err) {
-
-    }
-    finally {
-
-    }
-}
-
-getInfo(-34.65,-59.427)
-*/
-/*   
-fetch('https://apis.datos.gob.ar/georef/api/ubicacion?lat=-30.21&lon=-67.55')
-  .then((res) => (res.ok ? res.json() : Promise.reject(res))) 
-  .then(data => {
-    info = data 
-    console.log(info.ubicacion.municipio.nombre)
-    return info})
-  .catch((error) => {
-    console.log(error)
-    let mensaje = error.statusText || 'Falló la consulta a la API, revise su conexión'
-    Swal.fire({
-        icon: 'error',        
-        text: `${error.status}, ${mensaje}`,
-        confirmButtonText: 'Entendido!'
-      }) }
-    );
-*/
 
 let lista_coord = []
 
@@ -129,6 +93,12 @@ function validarEntrada (g_lat,m_lat,s_lat,g_long,m_long,s_long) {
 /// Muestra el resultado en el TextArea
 /// Guarda los resultados en el local storage
 
+let iconUser = L.icon({
+    iconUrl: './/assets/pin.svg',   // URL de la imagen del icono
+    iconSize: [38, 95],             // tamaño del icono
+   // iconAnchor: [22, 94],           // punto donde se ancla el icono (coincide con la punta)
+   // popupAnchor: [-3, -76],         // punto donde se ancla el popup relativo al icono
+});
 
 let $btnconvert = document.querySelector("#btn-convert")
 
@@ -145,7 +115,18 @@ $btnconvert.addEventListener("click",(e)=> {
         $areacoordplanas.value = $areacoordplanas.value + `${i}) ` + 'X = ' + coord_planas[0].toFixed(3) + '   Y = ' + coord_planas[1].toFixed(3) + '\n' 
         localStorage.setItem(`x${i}`,coord_planas[0])
         localStorage.setItem(`y${i}`,coord_planas[1])
+        //L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)],{}
+        let pointUser = L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)], {      
+            icon: iconUser,             
+        }).addTo(mimapa);
+        pointUser.on('click',()=>{pointUser.bindPopup(`<b>${i}</b><br>             
+            X = ${coord_planas[0].toFixed(2)}<br> 
+            Y = ${coord_planas[1].toFixed(2)}<br>`                                               
+        ).openPopup()  
+        }) 
         i = i + 1
+
+         
     }
     else {
         Swal.fire({
@@ -159,6 +140,8 @@ $btnconvert.addEventListener("click",(e)=> {
     }
 
 })
+
+
 
 // Sección de AYUDA que aparece en ASIDE
 
