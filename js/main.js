@@ -21,7 +21,6 @@ async function dataRamsac() {
         dataJson = await res.json();
         console.log(dataJson.features)
     dataJson.features.forEach(point => {
-        //console.log(point.properties.codigo_estacion + ' ' + point.geometry.coordinates[0])
         let pointName = point.properties.codigo_estacion,
             pointLat = point.geometry.coordinates[1],
             pointLong = point.geometry.coordinates[0],

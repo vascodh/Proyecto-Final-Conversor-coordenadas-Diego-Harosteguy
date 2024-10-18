@@ -1,6 +1,7 @@
 # Conversor de Coordenadas Geodesicas (Latitud y Longitud)  -> a Coordenadas Planas Gauss Krüger (x, y) - para la República Argentina
 
 ## Mapa de latitudes y longitudes que abarca el territorio argentino
+![Mi genial imagen](https://www.idecor.gob.ar//wp-content/uploads/2020/01/imagen-5.png)
 
 
 ### Mediante este conversor se prodrá obtener las coordenadas planas X e Y 
