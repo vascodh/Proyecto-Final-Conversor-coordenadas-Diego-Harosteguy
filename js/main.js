@@ -53,7 +53,7 @@ async function dataRamsac() {
 
 dataRamsac()
 
-
+let pointUser 
 let lista_coord = []
 
 let i = 1
@@ -116,14 +116,14 @@ $btnconvert.addEventListener("click",(e)=> {
         localStorage.setItem(`x${i}`,coord_planas[0])
         localStorage.setItem(`y${i}`,coord_planas[1])
         //L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)],{}
-        let pointUser = L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)], {      
+        pointUser = L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)], {      
             icon: iconUser,             
         }).addTo(mimapa);
-        pointUser.on('click',()=>{pointUser.bindPopup(`<b>${i}</b><br>             
+        pointUser.on('click',()=>{pointUser.bindPopup(`<b>Punto usuario</b><br>             
             X = ${coord_planas[0].toFixed(2)}<br> 
             Y = ${coord_planas[1].toFixed(2)}<br>`                                               
         ).openPopup()  
-        }) 
+        })
         i = i + 1
 
          
@@ -140,6 +140,7 @@ $btnconvert.addEventListener("click",(e)=> {
     }
 
 })
+
 
 
 
