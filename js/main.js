@@ -1,7 +1,8 @@
-import {calculoGeodesicasAplanas, gmsAgrados} from "./funcionesconversion.js"
+import {calculoGeodesicasAplanas, gmsAgrados, gradosAgms} from "./funcionesconversion.js"
 
 /// Utilizacion de los mapas abiertos de IGN(Instituto geografico Nacional)
 /// Documentación https://www.ign.gob.ar/NuestrasActividades/InformacionGeoespacial/ServiciosOGC/Leaflet
+/// Se muestra el mapa base
 
 let mimapa = L.map('mapa').setView([-40, -59], 3);
 L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_topo@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
@@ -11,35 +12,46 @@ L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_top
 }).addTo(mimapa);
 
 
-//marcador.bindPopup("¡Hola mundo!").openPopup();
+
+/// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
 async function dataRamsac() {
     try {
         let res = await fetch('.//assets/ramsac.json'),
         dataJson = await res.json();
         console.log(dataJson.features)
-    //    dataJson.properties.array.forEach(el => {
-    //  });
     dataJson.features.forEach(point => {
-        console.log(point.properties.codigo_estacion + ' ' + point.geometry.coordinates[0])
-        L.marker([point.geometry.coordinates[1], point.geometry.coordinates[0]], {
-            title: `${point.properties.codigo_estacion}`,   
+        //console.log(point.properties.codigo_estacion + ' ' + point.geometry.coordinates[0])
+        let pointName = point.properties.codigo_estacion,
+            pointLat = point.geometry.coordinates[1],
+            pointLong = point.geometry.coordinates[0],
+            lat = gradosAgms(pointLat),
+            long = gradosAgms(pointLong),
+            planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])
+            
+        console.log(planas)
+        let marca = L.marker([pointLat, pointLong], {
+            title: `${pointName}`,              
         }).addTo(mimapa);
 
-    });   
-    
+        marca.on('click',()=>{marca.bindPopup(`<b>${pointName}</b><br> 
+                                               Latitud: ${lat[0]}°${-lat[1]}'${-lat[2]}" S<br>
+                                               Longitud: ${long[0]}°${-long[1]}'${-long[2]}" O<br>                                               
+                                               X = ${planas[0].toFixed(2)}<br> 
+                                               Y = ${planas[1].toFixed(2)}<br>`                                               
+           ).openPopup()  
+
+        })     
+    });     
    
     
         }
     catch(err) {
 
     }
-    finally {
-
-    }
 }
-
 dataRamsac()
+
 /*
 async function getInfo(lat,long) {
     try {

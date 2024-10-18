@@ -63,7 +63,7 @@ export function gmsAgrados(g,m,s) {
     return -grados
 }
 
-function gradosAgms(grados) {
+export function gradosAgms(grados) {
     let gms = [];
     gms[0] = Math.trunc(grados);
     gms[1] = Math.trunc((grados - gms[0])*60);
