@@ -5,12 +5,13 @@ import {calculoGeodesicasAplanas, gmsAgrados, gradosAgms} from "./funcionesconve
 /// Se muestra el mapa base
 
 let mimapa = L.map('mapa').setView([-40, -59], 3);
+
 L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_topo@EPSG%3A3857@png/{z}/{x}/{-y}.png', {
     attribution: '<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="http://www.ign.gob.ar/AreaServicios/Argenmap/IntroduccionV2" target="_blank">Instituto Geográfico Nacional</a> + <a href="http://www.osm.org/copyright" target="_blank">OpenStreetMap</a>',
       minZoom: 3,
       maxZoom: 18
 }).addTo(mimapa);
-
+let pointUser 
 
 
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
@@ -53,7 +54,7 @@ async function dataRamsac() {
 
 dataRamsac()
 
-let pointUser 
+
 let lista_coord = []
 
 let i = 1
@@ -94,10 +95,8 @@ function validarEntrada (g_lat,m_lat,s_lat,g_long,m_long,s_long) {
 /// Guarda los resultados en el local storage
 
 let iconUser = L.icon({
-    iconUrl: './/assets/pin.svg',   // URL de la imagen del icono
-    iconSize: [38, 95],             // tamaño del icono
-   // iconAnchor: [22, 94],           // punto donde se ancla el icono (coincide con la punta)
-   // popupAnchor: [-3, -76],         // punto donde se ancla el popup relativo al icono
+    iconUrl: './/assets/pin.svg',  
+    iconSize: [38, 95],            
 });
 
 let $btnconvert = document.querySelector("#btn-convert")
@@ -115,18 +114,17 @@ $btnconvert.addEventListener("click",(e)=> {
         $areacoordplanas.value = $areacoordplanas.value + `${i}) ` + 'X = ' + coord_planas[0].toFixed(3) + '   Y = ' + coord_planas[1].toFixed(3) + '\n' 
         localStorage.setItem(`x${i}`,coord_planas[0])
         localStorage.setItem(`y${i}`,coord_planas[1])
-        //L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)],{}
+
         pointUser = L.marker([gmsAgrados(g_lat,m_lat,s_lat), gmsAgrados(g_long,m_long,s_long)], {      
             icon: iconUser,             
         }).addTo(mimapa);
-        pointUser.on('click',()=>{pointUser.bindPopup(`<b>Punto usuario</b><br>             
-            X = ${coord_planas[0].toFixed(2)}<br> 
-            Y = ${coord_planas[1].toFixed(2)}<br>`                                               
-        ).openPopup()  
+        pointUser.on('click',()=>{
+            pointUser.bindPopup(`<b>Punto usuario</b><br>             
+                                 X = ${coord_planas[0].toFixed(2)}<br> 
+                                 Y = ${coord_planas[1].toFixed(2)}<br>`                                               
+                               ).openPopup()  
         })
-        i = i + 1
-
-         
+        i = i + 1         
     }
     else {
         Swal.fire({
@@ -138,11 +136,15 @@ $btnconvert.addEventListener("click",(e)=> {
         confirmButtonText: 'Entendido!'
         })
     }
-
 })
 
+let $btndelete = document.querySelector("#btn-delete")
 
-
+$btndelete.addEventListener("click",(e)=> {
+    localStorage.clear();
+    $areacoordplanas.value = ''
+    i = 1
+})
 
 // Sección de AYUDA que aparece en ASIDE
 
