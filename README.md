@@ -7,4 +7,5 @@
 ### Mediante este conversor se prodrá obtener las coordenadas planas X e Y 
 * Se obtiene un mapa interctivo utilizando la libreria LEAFLET https://leafletjs.com
 * Se visualizan las coordenandas transformadas en text area en pantalla y en el mapa interactivo
-* Se carga en el mapa un archivo GeoJson Local con informacion sobre las estaciones permanentes RAMSAC de Argentina https://www.ign.gob.ar/NuestrasActividades/Geodesia/Ramsac
+* Se carga en el mapa un archivo GeoJson Local con información sobre las estaciones permanentes RAMSAC de Argentina https://www.ign.gob.ar/NuestrasActividades/Geodesia/Ramsac. 
+* Mediante el conversor se obtienen las coordenadas X e Y de cada estación
