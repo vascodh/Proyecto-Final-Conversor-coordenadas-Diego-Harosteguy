@@ -138,6 +138,8 @@ $btnconvert.addEventListener("click",(e)=> {
     }
 })
 
+// Boton y evento para limpiar textarea y localStorage
+
 let $btndelete = document.querySelector("#btn-delete")
 
 $btndelete.addEventListener("click",(e)=> {
