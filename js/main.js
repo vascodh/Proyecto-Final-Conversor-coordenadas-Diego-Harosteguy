@@ -11,8 +11,9 @@ L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_top
       minZoom: 3,
       maxZoom: 18
 }).addTo(mimapa);
-let pointUser 
+let pointUser, marker
 
+/// Funcion Fetch + Async Await para cargar datos Json de Provincia y Municipio Argentinos según Latitud y Longitud
 
 async function getInfo(lat,long) {
     try {
@@ -32,23 +33,25 @@ async function getInfo(lat,long) {
     }
 }
 
-getInfo(-37.45,-59.25)
+
 
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
 async function dataRamsac() {
+    let pointName, pointLat, lat, long, pointLong, planas
     try {
         let res = await fetch('.//assets/ramsac.json')
         if(!res.ok) throw {status:res.status}
         let dataJson = await res.json()
         for (let point of dataJson.features) {
-            let pointName = point.properties.codigo_estacion,
-                pointLat = point.geometry.coordinates[1],
-                pointLong = point.geometry.coordinates[0],
-                lat = gradosAgms(pointLat),
-                long = gradosAgms(pointLong),
-                planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])      
-            L.marker([pointLat, pointLong], {
+            pointName = point.properties.codigo_estacion
+            pointLat = point.geometry.coordinates[1]
+            pointLong = point.geometry.coordinates[0]
+            lat = gradosAgms(pointLat)
+            long = gradosAgms(pointLong)
+            planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])      
+
+            marker = L.marker([pointLat, pointLong], {
                 title: `${pointName}`,              
                 }).addTo(mimapa).bindPopup(`<b>${pointName}</b><br> 
                     Latitud: ${lat[0]}°${-lat[1]}'${-lat[2]}" S<br>
@@ -56,16 +59,19 @@ async function dataRamsac() {
                     X = ${planas[0].toFixed(2)}<br> 
                     Y = ${planas[1].toFixed(2)}<br>`   
                 )
-            } 
-            console.log(dataJson)          
-            for (let p of dataJson.features) {
-                let pointName = p.properties.codigo_estacion,
-                    pointLat = p.geometry.coordinates[1],
-                    pointLong = p.geometry.coordinates[0]
-
+            }      
+            for (let point of dataJson.features) {
+                pointName = point.properties.codigo_estacion,
+                pointLat = point.geometry.coordinates[1],
+                pointLong = point.geometry.coordinates[0]
                 let info = await getInfo(pointLat,pointLong)
-                console.log(info.provincia + ', ' + info.municipio)
+                //console.log(info.provincia + ', ' + info.municipio)
+                marker.bindPopup(`
+                    <b>${pointName} ???</b><br>
+                    <b>${info.provincia} ???</b><br>
+                `); 
             }
+            console.log('fin carga')
                 
     }
     catch(err) {
@@ -148,7 +154,7 @@ $btnconvert.addEventListener("click",(e)=> {
             pointUser.bindPopup(`<b>Punto usuario</b><br>             
                                  X = ${coord_planas[0].toFixed(2)}<br> 
                                  Y = ${coord_planas[1].toFixed(2)}<br>`                                               
-                               ).openPopup()  
+                               )
         })
         i = i + 1         
     }
