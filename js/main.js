@@ -18,13 +18,12 @@ async function getInfo(lat,long) {
     try {
         let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
         dataJson = await res.json();
-        console.log(dataJson);
-        let prov = dataJson.ubicacion.provincia.nombre,
-            muni = dataJson.ubicacion.municipio.nombre
+        let  prov = dataJson.ubicacion.provincia.nombre
+        let muni = dataJson.ubicacion.municipio.nombre
         console.log(dataJson.ubicacion.provincia.nombre)
         console.log(dataJson.ubicacion.municipio.nombre)
-        L.marker([lat, long]).addTo(mimapa);
-        return {json
+        //L.marker([lat, long]).addTo(mimapa);
+        return json
         }
     catch(err) {
 
@@ -33,6 +32,8 @@ async function getInfo(lat,long) {
 
     }
 }
+
+getInfo(-34.65,-59.427)
 
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
@@ -48,7 +49,7 @@ async function dataRamsac() {
                 lat = gradosAgms(pointLat),
                 long = gradosAgms(pointLong),
                 planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])
-
+                await getInfo(lat,long)
             L.marker([pointLat, pointLong], {
                 title: `${pointName}`,              
                 }).addTo(mimapa).bindPopup(`<b>${pointName}</b><br> 
