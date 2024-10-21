@@ -18,12 +18,13 @@ async function getInfo(lat,long) {
     try {
         let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
         dataJson = await res.json();
+
         let  prov = dataJson.ubicacion.provincia.nombre
         let muni = dataJson.ubicacion.municipio.nombre
-        console.log(dataJson.ubicacion.provincia.nombre)
-        console.log(dataJson.ubicacion.municipio.nombre)
-        //L.marker([lat, long]).addTo(mimapa);
-        return json
+        return {
+            provincia: prov,
+            municipio: muni
+        };
         }
     catch(err) {
 
@@ -33,7 +34,7 @@ async function getInfo(lat,long) {
     }
 }
 
-getInfo(-34.65,-59.427)
+
 
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
@@ -42,14 +43,14 @@ async function dataRamsac() {
         let res = await fetch('.//assets/ramsac.json')
         if(!res.ok) throw {status:res.status}
         let dataJson = await res.json()
-        dataJson.features.forEach(point => {
+        for (let point of dataJson.features) {
             let pointName = point.properties.codigo_estacion,
                 pointLat = point.geometry.coordinates[1],
                 pointLong = point.geometry.coordinates[0],
                 lat = gradosAgms(pointLat),
                 long = gradosAgms(pointLong),
                 planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])
-                await getInfo(lat,long)
+              //  info = await getInfo(lat,long)
             L.marker([pointLat, pointLong], {
                 title: `${pointName}`,              
                 }).addTo(mimapa).bindPopup(`<b>${pointName}</b><br> 
@@ -58,7 +59,7 @@ async function dataRamsac() {
                     X = ${planas[0].toFixed(2)}<br> 
                     Y = ${planas[1].toFixed(2)}<br>`   
                 )
-            })           
+            }           
     }
     catch(err) {
         let msg = "No se pudieron obtener los datos RAMSAC"
