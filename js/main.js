@@ -14,6 +14,26 @@ L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_top
 let pointUser 
 
 
+async function getInfo(lat,long) {
+    try {
+        let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
+        dataJson = await res.json();
+        console.log(dataJson);
+        let prov = dataJson.ubicacion.provincia.nombre,
+            muni = dataJson.ubicacion.municipio.nombre
+        console.log(dataJson.ubicacion.provincia.nombre)
+        console.log(dataJson.ubicacion.municipio.nombre)
+        L.marker([lat, long]).addTo(mimapa);
+        return {json
+        }
+    catch(err) {
+
+    }
+    finally {
+
+    }
+}
+
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
 async function dataRamsac() {
@@ -29,18 +49,15 @@ async function dataRamsac() {
                 long = gradosAgms(pointLong),
                 planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])
 
-            let marca = L.marker([pointLat, pointLong], {
+            L.marker([pointLat, pointLong], {
                 title: `${pointName}`,              
-                }).addTo(mimapa);
-
-            marca.on('click',()=>{marca.bindPopup(`<b>${pointName}</b><br> 
-                                               Latitud: ${lat[0]}°${-lat[1]}'${-lat[2]}" S<br>
-                                               Longitud: ${long[0]}°${-long[1]}'${-long[2]}" O<br>                                               
-                                               X = ${planas[0].toFixed(2)}<br> 
-                                               Y = ${planas[1].toFixed(2)}<br>`                                               
-                                        ).openPopup()  
-            })     
-        });         
+                }).addTo(mimapa).bindPopup(`<b>${pointName}</b><br> 
+                    Latitud: ${lat[0]}°${-lat[1]}'${-lat[2]}" S<br>
+                    Longitud: ${long[0]}°${-long[1]}'${-long[2]}" O<br>                                               
+                    X = ${planas[0].toFixed(2)}<br> 
+                    Y = ${planas[1].toFixed(2)}<br>`   
+                )
+            })           
     }
     catch(err) {
         let msg = "No se pudieron obtener los datos RAMSAC"
