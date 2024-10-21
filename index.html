@@ -26,47 +26,49 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Conversor de coordenadas</h2>
+    <up>     
+        <h2>Conversor de coordenadas</h2>  
         <section class = "geoaplanas">
-            <section class="coordLatitud"></section>            
-            <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Latitud Sur (S)</h3>
-            <p>Valores admitidos entre 21° 46' y 55° 03'</p>
-            <form class="form">
-            <label for="LatGrados">Grados</label>
-            <input id="LatGrados" class = "inputgeo" type="text" placeholder="34" maxlength="3">
-            <label for="LatMinutos">Minutos</label>            
-            <input id="LatMinutos" class = "inputgeo" type="text" placeholder="39" maxlength="2">
-            <label for="LatSegundos">Segundos</label>
-            <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.91149" maxlength="8">            
-            </form>
-            <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
-            <p>Valores admitidos entre 73° 34' y 53° 38'</p>
-            <label for="LongGrados">Grados</label>
-            <input id="LongGrados" class = "inputgeo" type="text" placeholder="59" maxlength="3">
-            <label for="LongMinutos">Minutos</label>            
-            <input id="LongMinutos" class = "inputgeo" type="text" placeholder="25" maxlength="2">
-            <label for="LongSegundos">Segundos</label>
-            <input id="LongSegundos" class = "inputgeo" type="text" placeholder="56.45634" maxlength="8">
-            <div class="convert-container">
-                <label for="contvertplanas">Convertir a coordenadas planas</label>            
-                <button class = "btn-app" id = "btn-convert">Convertir</button>
-            </div>
+        <section class="coordLatitud"></section>            
+        <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Latitud Sur (S)</h3>
+        <p>Valores admitidos entre 21° 46' y 55° 03'</p>
+        <form class="form">
+        <label for="LatGrados">Grados</label>
+        <input id="LatGrados" class = "inputgeo" type="text" placeholder="34" maxlength="3">
+        <label for="LatMinutos">Minutos</label>            
+        <input id="LatMinutos" class = "inputgeo" type="text" placeholder="39" maxlength="2">
+        <label for="LatSegundos">Segundos</label>
+        <input id="LatSegundos" class = "inputgeo" type="text" placeholder="24.91149" maxlength="8">            
+        </form>
+        <h3><img class = "location-pin" src="./assets/location-pin.svg" alt="location pin">  Coordenada Longitud Oeste (W)</h3>
+        <p>Valores admitidos entre 73° 34' y 53° 38'</p>
+        <label for="LongGrados">Grados</label>
+        <input id="LongGrados" class = "inputgeo" type="text" placeholder="59" maxlength="3">
+        <label for="LongMinutos">Minutos</label>            
+        <input id="LongMinutos" class = "inputgeo" type="text" placeholder="25" maxlength="2">
+        <label for="LongSegundos">Segundos</label>
+        <input id="LongSegundos" class = "inputgeo" type="text" placeholder="56.45634" maxlength="8">
+        <div class="convert-container">
+            <label for="contvertplanas">Convertir a coordenadas planas</label>            
+            <button class = "btn-app" id = "btn-convert">Convertir</button>
+        </div>
         </section>
-        <section class="resultplanas">
+    </up>
+    <main>        
+        <div id="mapa" style="height:400px;"></div>
+        <section class="resultplanas"></section>
             <h3>Resultado coordenadas Gauss-Krüger</h3>
             <textarea class = "coordplanas" id="areacoordplanas" readonly></textarea>
             <button class = "btn-app" id = "btn-delete">Borrar</button>           
         </section>
     </main>
-    <aside>
+    <nav>
         <section id = "ayuda" class = "ayuda inactive"> 
             <img class = "help-icon" src="./assets/help.svg" alt="help-icon">            
             <p>Esta aplicación convierte coordenadas geodésicas Latitud (Sur) y Longitud (Oeste - W) a coordenadas planas Gauss-Krüger (X, Y) </p>
             <p>Esto es útil para el cálculo de distancia entre dos puntos y también para graficar los puntos en un software CAD</p>            
         </section>
-        <div id="mapa" style="height:400px;"></div>
-    </aside> 
+    </nav> 
     <footer>
         <p id="fecha"></p>
         <p>Hornero dev's - Coderhouse</p>        
