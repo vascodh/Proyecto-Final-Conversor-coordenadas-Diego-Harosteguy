@@ -19,12 +19,10 @@ async function getInfo(lat,long) {
         let res = await fetch(`https://apis.datos.gob.ar/georef/api/ubicacion?lat=${lat}&lon=${long}`),
         dataJson = await res.json();
 
-        let  prov = dataJson.ubicacion.provincia.nombre
-        let muni = dataJson.ubicacion.municipio.nombre
-        return {
-            provincia: prov,
-            municipio: muni
-        };
+        let  prov = (dataJson.ubicacion.provincia.nombre == null) ? 'Sin datos' : dataJson.ubicacion.provincia.nombre
+        let muni = (dataJson.ubicacion.municipio.nombre == null) ? 'Sin datos' : dataJson.ubicacion.provincia.nombre
+        
+        return {provincia: prov, municipio: muni}
         }
     catch(err) {
 
@@ -34,7 +32,7 @@ async function getInfo(lat,long) {
     }
 }
 
-
+getInfo(-37.45,-59.25)
 
 /// Funcion Fetch + Async Await para cargar arhivo GeoJson Local con informacion
 
@@ -49,8 +47,7 @@ async function dataRamsac() {
                 pointLong = point.geometry.coordinates[0],
                 lat = gradosAgms(pointLat),
                 long = gradosAgms(pointLong),
-                planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])
-              //  info = await getInfo(lat,long)
+                planas = calculoGeodesicasAplanas(lat[0],lat[1],lat[2],long[0],long[1],long[2])      
             L.marker([pointLat, pointLong], {
                 title: `${pointName}`,              
                 }).addTo(mimapa).bindPopup(`<b>${pointName}</b><br> 
@@ -59,7 +56,17 @@ async function dataRamsac() {
                     X = ${planas[0].toFixed(2)}<br> 
                     Y = ${planas[1].toFixed(2)}<br>`   
                 )
-            }           
+            } 
+            console.log(dataJson)          
+            for (let p of dataJson.features) {
+                let pointName = p.properties.codigo_estacion,
+                    pointLat = p.geometry.coordinates[1],
+                    pointLong = p.geometry.coordinates[0]
+
+                let info = await getInfo(pointLat,pointLong)
+                console.log(info.provincia + ', ' + info.municipio)
+            }
+                
     }
     catch(err) {
         let msg = "No se pudieron obtener los datos RAMSAC"
